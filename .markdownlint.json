@@ -1,0 +1,33 @@
+{
+    "default": true,
+    "line-length": false,
+    "no-trailing-spaces": true,
+    "no-multiple-blanks": true,
+    "no-hard-tabs": true,
+    "blanks-around-headings": true,
+    "first-heading-h1": true,
+    "heading-increment": true,
+    "no-duplicate-header": true,
+    "no-inline-html": false,
+    "fenced-code-language": true,
+    "list-indent": true,
+    "list-marker-space": false,
+    "code-block-style": {
+        "style": "fenced"
+    },
+    "emphasis-style": {
+        "style": "consistent"
+    },
+    "strong-style": {
+        "style": "consistent"
+    },
+    "linebreak-style": {
+        "style": "unix"
+    },
+    "ordered-list-marker-value": {
+        "style": "ordered"
+    },
+    "unordered-list-marker-style": {
+        "style": "-"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "typescript-guide",
+    "author": "Emilio Dominguez",
+    "license": "MIT",
+    "version": "1.0.0",
+    "description": "TSPlaybook is an open-source guide to help developers learn TypeScript. With clear explanations, practical examples, and exercises, it covers everything from basics to advanced topics. Improve your TypeScript skills and write more reliable code with this hands-on guide.",
+    "keywords": [
+        "typescript",
+        "guide",
+        "book",
+        "learn",
+        "tutorial",
+        "handbook",
+        "playbook"
+    ],
+    "scripts": {
+        "format": "prettier --write .",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "husky": "^9.1.6",
+        "lint-staged": "^15.2.10",
+        "markdownlint": "^0.36.1",
+        "prettier": "^3.3.3"
+    }
+}
