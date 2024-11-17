@@ -118,8 +118,8 @@ automatically.
 Now, if you haven't already, let's create a simple TypeScript file (`src/index.ts`) with the following code:
 
 ```typescript
-const message: string = "Hello, TypeScript!"
-console.log(message)
+const message: string = "Hello, TypeScript!";
+console.log(message);
 ```
 
 You can compile the TypeScript file using the following command:

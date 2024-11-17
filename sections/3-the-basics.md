@@ -30,9 +30,9 @@ declarations instead of `var` to avoid common pitfalls and ensure better code qu
 Here is an example of declaring variables in TypeScript:
 
 ```typescript
-let person: string = "John Doe"
-const age: number = 30
-var isActive: boolean = true
+let person: string = "John Doe";
+const age: number = 30;
+var isActive: boolean = true;
 ```
 
 In this example, we declare three variables: `person` of type `string`, `age` of type `number`, and `isActive` of type
@@ -42,38 +42,38 @@ Now, let's see how these behave in TypeScript. If you try to reassign a value to
 throw an error:
 
 ```typescript
-const age: number = 30
+const age: number = 30;
 
-age = 40 // Error: Cannot assign to 'age' because it is a constant.
+age = 40; // Error: Cannot assign to 'age' because it is a constant.
 ```
 
 Similarly, if you try to access a variable before it is declared or use a different type than the one declared,
 TypeScript will throw an error:
 
 ```typescript
-console.log(person) // Error: Block-scoped variable 'person' used before its declaration.
+console.log(person); // Error: Block-scoped variable 'person' used before its declaration.
 
-let person: string = "John Doe"
+let person: string = "John Doe";
 
-person = 30 // Error: Type 'number' is not assignable to type 'string'.
+person = 30; // Error: Type 'number' is not assignable to type 'string'.
 ```
 
 Now, let's see some common pitfalls when using `var` in TypeScript, which can lead to unexpected behavior:
 
 ```typescript
 if (true) {
-    var x: number = 10
+    var x: number = 10;
 }
 
-console.log(x) // Output: 10
+console.log(x); // Output: 10
 
 for (var i = 0; i < 5; i++) {
     setTimeout(() => {
-        console.log(i) // Output: 5 5 5 5 5
-    }, 1000)
+        console.log(i); // Output: 5 5 5 5 5
+    }, 1000);
 }
 
-console.log(i) // Output: 5
+console.log(i); // Output: 5
 ```
 
 Although these aren't issues per se, but rather expected behavior in JavaScript, it is important to know when to use
@@ -147,10 +147,10 @@ Here's an example of a simple function in TypeScript:
 
 ```typescript
 function greet(name: string): string {
-    return `Hello, ${name}!`
+    return `Hello, ${name}!`;
 }
 
-console.log(greet("John")) // Output: Hello, John!
+console.log(greet("John")); // Output: Hello, John!
 ```
 
 In this example, the `greet` function takes a `name` parameter of type `string` and returns a string greeting. The type
@@ -175,20 +175,20 @@ Here's an example of a simple class in TypeScript:
 
 ```typescript
 class Person {
-    private name: string
+    private name: string;
 
     constructor(name: string) {
-        this.name = name
+        this.name = name;
     }
 
     greet(): string {
-        return `Hello, my name is ${this.name}.`
+        return `Hello, my name is ${this.name}.`;
     }
 }
 
-const john = new Person("John")
+const john = new Person("John");
 
-console.log(john.greet()) // Output: Hello, my name is John.
+console.log(john.greet()); // Output: Hello, my name is John.
 ```
 
 In this example, the `Person` class has a private property `name`, a constructor that initializes the `name` property,
@@ -212,20 +212,20 @@ Here's an example of an interface in TypeScript:
 
 ```typescript
 interface Person {
-    name: string
-    age: number
-    greet(): string
+    name: string;
+    age: number;
+    greet(): string;
 }
 
 const john: Person = {
     name: "John",
     age: 30,
     greet() {
-        return `Hello, my name is ${this.name} and I'm ${this.age} years old.`
+        return `Hello, my name is ${this.name} and I'm ${this.age} years old.`;
     }
-}
+};
 
-console.log(john.greet()) // Output: Hello, my name is John and I'm 30 years old.
+console.log(john.greet()); // Output: Hello, my name is John and I'm 30 years old.
 ```
 
 In this example, the `Person` interface defines the structure of a person object with `name` and `age` properties and a
@@ -238,24 +238,24 @@ Here's an example of using an interface with a class:
 
 ```typescript
 interface Animal {
-    name: string
-    makeSound(): void
+    name: string;
+    makeSound(): void;
 }
 
 class Dog implements Animal {
-    name: string
+    name: string;
 
     constructor(name: string) {
-        this.name = name
+        this.name = name;
     }
 
     makeSound(): void {
-        console.log("Woof!")
+        console.log("Woof!");
     }
 }
 
-const dog = new Dog("Buddy")
-dog.makeSound() // Output: Woof!
+const dog = new Dog("Buddy");
+dog.makeSound(); // Output: Woof!
 ```
 
 In this example, the `Animal` interface defines the structure of an animal object with a `name` property and a
@@ -275,21 +275,21 @@ Here's an example of using intersection types:
 
 ```typescript
 interface Person {
-    name: string
+    name: string;
 }
 
 interface Employee {
-    company: string
+    company: string;
 }
 
-type EmployeePerson = Person & Employee
+type EmployeePerson = Person & Employee;
 
 const employee: EmployeePerson = {
     name: "John Doe",
     company: "Acme Inc."
-}
+};
 
-console.log(employee) // Output: { name: 'John Doe', company: 'Acme Inc.' }
+console.log(employee); // Output: { name: 'John Doe', company: 'Acme Inc.' }
 ```
 
 In this example, the `EmployeePerson` type is an intersection of the `Person` and `Employee` interfaces, combining their
@@ -308,14 +308,14 @@ how you define variables and function parameters.
 Here's an example of using union types:
 
 ```typescript
-type ID = string | number
+type ID = string | number;
 
 function printID(id: ID): void {
-    console.log(`ID: ${id}`)
+    console.log(`ID: ${id}`);
 }
 
-printID("ABC123") // Output: ID: ABC123
-printID(456) // Output: ID: 456
+printID("ABC123"); // Output: ID: ABC123
+printID(456); // Output: ID: 456
 ```
 
 In this example, the `ID` type is a union of `string` and `number`, allowing the `printID` function to accept values of
@@ -336,14 +336,14 @@ Here's an example of using generics:
 
 ```typescript
 function identity<T>(arg: T): T {
-    return arg
+    return arg;
 }
 
-const result1 = identity<string>("Hello, generics!")
-console.log(result1) // Output: Hello, generics!
+const result1 = identity<string>("Hello, generics!");
+console.log(result1); // Output: Hello, generics!
 
-const result2 = identity<number>(42)
-console.log(result2) // Output: 42
+const result2 = identity<number>(42);
+console.log(result2); // Output: 42
 ```
 
 In this example, the `identity` function uses a generic type `T` to accept and return values of any type. By specifying
@@ -354,14 +354,14 @@ Here's a more advanced example of using generics with interfaces:
 
 ```typescript
 interface Box<T> {
-    value: T
+    value: T;
 }
 
-const box1: Box<string> = { value: "Hello, generics!" }
-const box2: Box<number> = { value: 42 }
+const box1: Box<string> = { value: "Hello, generics!" };
+const box2: Box<number> = { value: 42 };
 
-console.log(box1.value) // Output: Hello, generics!
-console.log(box2.value) // Output: 42
+console.log(box1.value); // Output: Hello, generics!
+console.log(box2.value); // Output: 42
 ```
 
 In this example, the `Box` interface uses a generic type `T` to define a box that can hold values of any type. This
