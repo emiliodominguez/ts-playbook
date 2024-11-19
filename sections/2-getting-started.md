@@ -3,6 +3,14 @@
 Before you start learning TypeScript, you need to set up your development environment. This section will guide you
 through the installation, configuration, and editor setup to get you up and running with TypeScript.
 
+## **Table of Contents**
+
+1. [Installation](#installation)
+2. [Project Setup](#project-setup)
+3. [Configuration](#configuration)
+4. [Editor Setup](#editor-setup)
+5. [Useful Extensions](#useful-extensions)
+
 ## **Installation**
 
 To get started with TypeScript and follow along with this playbook, you need to have Node.js installed on your machine.

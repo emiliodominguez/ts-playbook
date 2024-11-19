@@ -4,6 +4,22 @@ OK, let's start with the basics of TypeScript. In this section, we will cover va
 interfaces, and more. These fundamental concepts will help you understand the core features of TypeScript and how to use
 them in your code.
 
+## **Table of Contents**
+
+1. [Variables](#variables)
+2. [Data Types](#data-types)
+    - [Primitive Types](#primitive-types)
+    - [Array and Tuple Types](#array-and-tuple-types)
+    - [Enums](#enums)
+    - [Function Types](#function-types)
+    - [Special Types](#special-types)
+3. [Functions](#functions)
+4. [Classes](#classes)
+5. [Interfaces](#interfaces)
+6. [Intersection Types](#intersection-types)
+7. [Union Types](#union-types)
+8. [Generics](#generics)
+
 ## **Variables**
 
 In TypeScript, as in JavaScript, you can declare variables using the `let`, `const`, or `var` keywords. Each of these
@@ -81,8 +97,6 @@ each keyword and the differences and implications of using them in your code. Fo
 declarations in TypeScript, you can refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/variable-declarations.html).
 
----
-
 ## **Data Types**
 
 TypeScript provides several built-in data types to help you define the shape of your data and ensure type safety. Below
@@ -136,8 +150,6 @@ is an overview of the most commonly used types:
 -   **`never`**: Represents a value that never occurs (used for functions that never return or throw errors).
     [Learn more](https://www.typescriptlang.org/docs/handbook/2/functions.html#never).
 
----
-
 ## **Functions**
 
 Functions in TypeScript are similar to JavaScript functions but with added type annotations for parameters and return
@@ -163,8 +175,6 @@ Learn more about functions in TypeScript by reading the following resources from
 
 -   [Functions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#functions)
 -   [More on Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html)
-
----
 
 ## **Classes**
 
@@ -200,8 +210,6 @@ and a `greet` method that returns a greeting message.
 
 To learn more about classes in TypeScript, refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/2/classes.html).
-
----
 
 ## **Interfaces**
 
@@ -264,8 +272,6 @@ In this example, the `Animal` interface defines the structure of an animal objec
 To learn more about interfaces in TypeScript, refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/2/objects.html).
 
----
-
 ## **Intersection Types**
 
 Intersection types in TypeScript allow you to combine multiple types into a single type. This enables you to create new
@@ -298,8 +304,6 @@ properties into a single type. The `employee` object implements this type, conta
 To learn more about intersection types in TypeScript, refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/2/objects.html#intersection-types).
 
----
-
 ## **Union Types**
 
 Union types in TypeScript allow you to specify that a value can be one of several types. This provides flexibility in
@@ -323,8 +327,6 @@ either type. This flexibility helps in handling different scenarios where a valu
 
 To learn more about union types in TypeScript, refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types).
-
----
 
 ## **Generics**
 
