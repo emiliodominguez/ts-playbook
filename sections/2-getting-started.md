@@ -181,7 +181,7 @@ npm run dev
 Try making some changes to the TypeScript file and see the changes reflected in the output.
 
 This will work for now to follow along with the playbook and keeping it simple. As we move forward, we will explore more
-advanced, scalable and efficient ways to set up your TypeScript projects.
+[advanced, scalable and efficient ways to set up your TypeScript projects](./7-advanced-setup.md).
 
 ## **Editor Setup**
 
