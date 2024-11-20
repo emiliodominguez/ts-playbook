@@ -16,9 +16,11 @@ them in your code.
 3. [Functions](#functions)
 4. [Classes](#classes)
 5. [Interfaces](#interfaces)
-6. [Intersection Types](#intersection-types)
-7. [Union Types](#union-types)
-8. [Generics](#generics)
+6. [Type Aliases](#type-aliases)
+    - [Type Aliases vs Interfaces](#type-aliases-vs-interfaces)
+7. [Intersection Types](#intersection-types)
+8. [Union Types](#union-types)
+9. [Generics](#generics)
 
 ## **Variables**
 
@@ -271,6 +273,43 @@ In this example, the `Animal` interface defines the structure of an animal objec
 
 To learn more about interfaces in TypeScript, refer to the
 [official documentation](https://www.typescriptlang.org/docs/handbook/2/objects.html).
+
+## **Type Aliases**
+
+Type aliases allow you to create custom names for types in TypeScript. You can use type aliases to define complex types
+or to give more descriptive names to existing types.
+
+```typescript
+type ID = number;
+
+type User = {
+    id: ID;
+    name: string;
+};
+
+const user: User = {
+    id: 1,
+    name: "Alice"
+};
+```
+
+In the example above, we define a `ID` type alias for `number` and a `User` type alias for an object with `id` and
+`name` properties. Type aliases can make your code more readable and maintainable by giving meaningful names to types.
+They can also help reduce duplication by defining common types in one place.
+
+### **Type Aliases vs Interfaces**
+
+Type aliases and interfaces are similar in many ways, but there are some key differences between them:
+
+-   **Type aliases** are more flexible than interfaces. You can use type aliases to define union types, intersection
+    types, tuple types, and more complex types that interfaces cannot express.
+-   **Interfaces** are more suitable for defining object shapes. If you need to define an object with specific
+    properties, methods, or signatures, interfaces are the way to go. Interfaces can also be extended and implemented,
+    which is not possible with type aliases.
+
+In general, use type aliases when you need to define complex types or give meaningful names to existing types, and use
+interfaces when you need to define object shapes with specific properties and methods. You can also use a combination of
+type aliases and interfaces to achieve the desired level of expressiveness and flexibility in your code.
 
 ## **Intersection Types**
 

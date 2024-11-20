@@ -11,17 +11,18 @@ code. Let's dive in!
 4.  [Recursive Types](#recursive-types)
 5.  [Type Inference](#type-inference)
 6.  [Type Narrowing](#type-narrowing)
-    -   [Type Guards](#type-guards)
-    -   [Type Predicates](#type-predicates)
     -   [Type Casting](#type-casting)
         -   [Casting Objects](#casting-objects)
+    -   [Type Guards](#type-guards)
+    -   [Type Predicates](#type-predicates)
+    -   [The `in` Operator](#the-in-operator)
 7.  [Type Reflection](#type-reflection)
 8.  [Type Compatibility](#type-compatibility)
-9.  [Type Aliases](#type-aliases)
-    -   [Type Aliases vs Interfaces](#type-aliases-vs-interfaces)
-10. [Decorators](#decorators)
-11. [Modules](#modules)
-12. [Namespaces](#namespaces)
+9.  [Overloading](#overloading)
+10. [Mixins](#mixins)
+11. [Decorators](#decorators)
+12. [Modules](#modules)
+13. [Namespaces](#namespaces)
 
 ## **Mapped Types**
 
@@ -332,6 +333,46 @@ function makeSound(animal: Animal) {
 In the above example, TypeScript narrows the type of `animal` based on the `type` property, so you can safely call
 either `bark` or `meow`.
 
+### **Type Casting**
+
+Type casting allows you to tell TypeScript to treat a value as a certain type. This is useful when you know more about
+the value's type than TypeScript can infer. There are two ways to perform type casting:
+
+-   `as` syntax (preferred)
+
+```typescript
+let value: any = "Hello, World!";
+let stringLength: number = (value as string).length;
+```
+
+-   Angle-bracket syntax
+
+```typescript
+let value: any = "Hello, World!";
+let stringLength: number = (<string>value).length;
+```
+
+While both methods work, the `as` syntax is generally preferred because it’s more explicit and avoids conflicts with,
+for example, JSX in React.
+
+#### **Casting Objects**
+
+You can also cast objects when you know the object conforms to a certain type, but TypeScript cannot automatically infer
+it.
+
+```typescript
+interface Person {
+    name: string;
+    age: number;
+}
+
+const data: any = { name: "Alice", age: 30 };
+const person = data as Person; // Now `person` is treated as type `Person`
+```
+
+> **Note:** While type casting can be useful, it bypasses TypeScript’s safety checks, so it's best used sparingly and
+> only when you are confident about the value’s type.
+
 ### **Type Guards**
 
 Type guards are a way to check the type of a value at runtime and narrow its type in a conditional block. You can use
@@ -398,45 +439,34 @@ function example(value: any) {
 
 Type predicates provide more precise type narrowing in your functions and help with runtime checks.
 
-### **Type Casting**
+### **The `in` Operator**
 
-Type casting allows you to tell TypeScript to treat a value as a certain type. This is useful when you know more about
-the value's type than TypeScript can infer. There are two ways to perform type casting:
-
--   `as` syntax (preferred)
+The `in` operator can be used to check if a property exists on an object. This can be useful for narrowing the type of
+an object based on the presence of a property.
 
 ```typescript
-let value: any = "Hello, World!";
-let stringLength: number = (value as string).length;
-```
-
--   Angle-bracket syntax
-
-```typescript
-let value: any = "Hello, World!";
-let stringLength: number = (<string>value).length;
-```
-
-While both methods work, the `as` syntax is generally preferred because it’s more explicit and avoids conflicts with,
-for example, JSX in React.
-
-#### **Casting Objects**
-
-You can also cast objects when you know the object conforms to a certain type, but TypeScript cannot automatically infer
-it.
-
-```typescript
-interface Person {
-    name: string;
-    age: number;
+interface Circle {
+    kind: "circle";
+    radius: number;
 }
 
-const data: any = { name: "Alice", age: 30 };
-const person = data as Person; // Now `person` is treated as type `Person`
-```
+interface Square {
+    kind: "square";
+    sideLength: number;
+}
 
-> **Note:** While type casting can be useful, it bypasses TypeScript’s safety checks, so it's best used sparingly and
-> only when you are confident about the value’s type.
+type Shape = Circle | Square;
+
+function getArea(shape: Shape): number {
+    if ("radius" in shape) {
+        // shape is narrowed to Circle
+        return Math.PI * shape.radius ** 2;
+    } else {
+        // shape is narrowed to Square
+        return shape.sideLength ** 2;
+    }
+}
+```
 
 ## **Type Reflection**
 
@@ -514,42 +544,92 @@ In the example above, `Point2D` and `Point3D` have the same structure, so you ca
 have. TypeScript checks the shape of the types to determine compatibility, rather than relying on explicit type
 annotations.
 
-## **Type Aliases**
+## **Overloading**
 
-Type aliases allow you to create custom names for types in TypeScript. You can use type aliases to define complex types
-or to give more descriptive names to existing types.
+Function overloading allows you to define multiple function signatures for a single function. You can use overloading to
+provide different ways to call a function based on the number or types of arguments passed to it.
 
 ```typescript
-type ID = number;
+type NumberOrString = number | string;
 
-type User = {
-    id: ID;
-    name: string;
-};
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: NumberOrString, b: NumberOrString): NumberOrString {
+    if (typeof a === "number" && typeof b === "number") {
+        return a + b;
+    }
 
-const user: User = {
-    id: 1,
-    name: "Alice"
-};
+    if (typeof a === "string" && typeof b === "string") {
+        return a + b;
+    }
+
+    throw new Error("Parameters must be numbers or strings of the same type");
+}
+
+const result1 = add(1, 2); // result1 is inferred as number
+const result2 = add("Hello, ", "World!"); // result2 is inferred as string
+
+console.log(result1); // 3
+console.log(result2); // Hello, World!
 ```
 
-In the example above, we define a `ID` type alias for `number` and a `User` type alias for an object with `id` and
-`name` properties. Type aliases can make your code more readable and maintainable by giving meaningful names to types.
-They can also help reduce duplication by defining common types in one place.
+This is particularly useful when you want to provide different implementations of a function based on the types of its
+arguments. TypeScript will automatically infer the correct return type based on the overload that matches the arguments
+of the function call.
 
-### **Type Aliases vs Interfaces**
+## **Mixins**
 
-Type aliases and interfaces are similar in many ways, but there are some key differences between them:
+Mixins are a way to combine multiple classes into a single class in TypeScript. You can use mixins to add functionality
+to a class by mixing in methods and properties from other classes. This allows you to create reusable components that
+can be combined in different ways to create new classes with different features.
 
--   **Type aliases** are more flexible than interfaces. You can use type aliases to define union types, intersection
-    types, tuple types, and more complex types that interfaces cannot express.
--   **Interfaces** are more suitable for defining object shapes. If you need to define an object with specific
-    properties, methods, or signatures, interfaces are the way to go. Interfaces can also be extended and implemented,
-    which is not possible with type aliases.
+Here's an example of how you can create a mixin in TypeScript:
 
-In general, use type aliases when you need to define complex types or give meaningful names to existing types, and use
-interfaces when you need to define object shapes with specific properties and methods. You can also use a combination of
-type aliases and interfaces to achieve the desired level of expressiveness and flexibility in your code.
+```typescript
+class Printable {
+    print() {
+        console.log(this);
+    }
+}
+
+class Loggable {
+    log() {
+        console.log(`[${new Date().toISOString()}] - ${JSON.stringify(this)}`);
+    }
+}
+
+function applyMixins(
+    derivedConstructor: new (...args: any[]) => any,
+    baseConstructors: (new (...args: any[]) => any)[]
+) {
+    baseConstructors.forEach((baseConstructor) => {
+        Object.getOwnPropertyNames(baseConstructor.prototype).forEach((name) => {
+            derivedConstructor.prototype[name] = baseConstructor.prototype[name];
+        });
+    });
+}
+
+class Message {
+    constructor(public text: string) {}
+}
+
+applyMixins(Message, [Printable, Loggable]);
+
+const message = new Message("Hello, World!");
+
+(message as unknown as Printable).print(); // { text: 'Hello, World!' }
+(message as unknown as Loggable).log(); // [timestamp] - { text: 'Hello, World!' }
+```
+
+In the example above, we define two classes, `Printable` and `Loggable`, that provide printing and logging
+functionality, respectively. We then create a `Message` class that mixes in the `Printable` and `Loggable` classes using
+the `applyMixins` function. This allows the `Message` class to inherit the `print` and `log` methods from the
+`Printable` and `Loggable` classes, respectively.
+
+> **Note:** We've used the [type assertion](#type-casting) (`as unknown as`) in the example above to access the `print`
+> and `log` methods on the `Message` instance. This is necessary because TypeScript doesn't have built-in support for
+> mixins, so we need to use type assertions to access the mixed-in methods. Otherwise, TypeScript would raise an error
+> as it doesn't know that the `Message` class has the `print` and `log` methods.
 
 ## **Decorators**
 

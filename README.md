@@ -33,6 +33,8 @@ multiple sections to make it easier to navigate and understand.
     - [Functions](./sections/3-the-basics.md#functions)
     - [Classes](./sections/3-the-basics.md#classes)
     - [Interfaces](./sections/3-the-basics.md#interfaces)
+    - [Type Aliases](./sections/3-the-basics.md#type-aliases)
+        - [Type Aliases vs Interfaces](./sections/3-the-basics.md#type-aliases-vs-interfaces)
     - [Intersection Types](./sections/3-the-basics.md#intersection-types)
     - [Union Types](./sections/3-the-basics.md#union-types)
     - [Generics](./sections/3-the-basics.md#generics)
@@ -70,42 +72,47 @@ multiple sections to make it easier to navigate and understand.
     - [Recursive Types](./sections/5-advanced-topics.md#recursive-types)
     - [Type Inference](./sections/5-advanced-topics.md#type-inference)
     - [Type Narrowing](./sections/5-advanced-topics.md#type-narrowing)
-        - [Type Guards](./sections/5-advanced-topics.md#type-guards)
-        - [Type Predicates](./sections/5-advanced-topics.md#type-predicates)
         - [Type Casting](./sections/5-advanced-topics.md#type-casting)
             - [Casting Objects](./sections/5-advanced-topics.md#casting-objects)
+        - [Type Guards](./sections/5-advanced-topics.md#type-guards)
+        - [Type Predicates](./sections/5-advanced-topics.md#type-predicates)
+        - [The `in` Operator](./sections/5-advanced-topics.md#the-in-operator)
     - [Type Reflection](./sections/5-advanced-topics.md#type-reflection)
     - [Type Compatibility](./sections/5-advanced-topics.md#type-compatibility)
-    - [Type Aliases](./sections/5-advanced-topics.md#type-aliases)
-        - [Type Aliases vs Interfaces](./sections/5-advanced-topics.md#type-aliases-vs-interfaces)
+    - [Overloading](./sections/5-advanced-topics.md#overloading)
+    - [Mixins](./sections/5-advanced-topics.md#mixins)
     - [Decorators](./sections/5-advanced-topics.md#decorators)
     - [Modules](./sections/5-advanced-topics.md#modules)
     - [Namespaces](./sections/5-advanced-topics.md#namespaces)
-6. [Advanced setup](#advanced-setup)
-7. [Best Practices](#best-practices)
-    - [Code Style](#code-style)
-    - [Error Handling](#error-handling)
-    - [Testing](#testing)
-    - [Performance](#performance)
-    - [Security](#security)
-8. [Design Patterns](#design-patterns)
-    - [Creational Patterns](#creational-patterns)
-    - [Structural Patterns](#structural-patterns)
-    - [Behavioral Patterns](#behavioral-patterns)
-9. [Resources](#resources)
+6. [Best Practices](./sections/6-best-practices.md)
+    - [Enforce Strict Typing](./sections/6-best-practices.md#enforce-strict-typing)
+    - [Use Type Aliases and Interfaces Wisely](./sections/6-best-practices.md#use-type-aliases-and-interfaces-wisely)
+    - [Avoid Excessive Use of `any`](./sections/6-best-practices.md#avoid-excessive-use-of-any)
+    - [Use Readonly and Immutable Types](./sections/6-best-practices.md#use-readonly-and-immutable-types)
+    - [Leverage Utility Types](./sections/6-best-practices.md#leverage-utility-types)
+    - [Narrow Types Explicitly](./sections/6-best-practices.md#narrow-types-explicitly)
+    - [Use `unknown` Over `any`](./sections/6-best-practices.md#use-unknown-over-any)
+    - [Avoid Namespace Pollution](./sections/6-best-practices.md#avoid-namespace-pollution)
+    - [Document Types and Functions](./sections/6-best-practices.md#document-types-and-functions)
+    - [Keep `tsconfig.json` Clean](./sections/6-best-practices.md#keep-tsconfigjson-clean)
+    - [Optimize `any` to `never` in Utility Scenarios](./sections/6-best-practices.md#optimize-any-to-never-in-utility-scenarios)
+    - [Utilize ESLint and Prettier](./sections/6-best-practices.md#utilize-eslint-and-prettier)
+    - [Ensure Backward Compatibility](./sections/6-best-practices.md#ensure-backward-compatibility)
+7. [Advanced setup](#advanced-setup)
+8. [Resources](#resources)
     - [TypeScript Playground](#typescript-playground)
     - [Helpful Tools and Libraries](#helpful-tools-and-libraries)
     - [Community Resources](#community-resources)
-10. [Conclusion](#conclusion)
-11. [Contributing](#contributing)
-12. [Code of Conduct](#code-of-conduct)
-13. [License](#license)
+9. [Conclusion](#conclusion)
+10. [Contributing](#contributing)
+11. [Code of Conduct](#code-of-conduct)
+12. [License](#license)
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Please read the [contribution guidelines](CONTRIBUTING.md) to get started.
+Contributions are welcome! Please read the [contribution guidelines](./CONTRIBUTING.md) to get started.
 
 ## Code of Conduct
 
@@ -113,4 +120,4 @@ Please read our [code of conduct](./CODE_OF_CONDUCT.md) to understand our commun
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
